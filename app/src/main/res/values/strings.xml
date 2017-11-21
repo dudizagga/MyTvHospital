@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MyWorkers</string>
+    <string name="country_prompt">Choose a country</string>
+
+    <string-array name="hospital_arrays">
+        <item>Carmel</item>
+        <item>Rambam</item>
+        <item>bni-zion</item>
+    </string-array>
+
+    <string-array name="carmel_arrays">
+        <item>dam</item>
+        <item>chest</item>
+        <item>hart</item>
+    </string-array>
+
+    <string-array name="Rambam_arrays">
+        <item>coco</item>
+        <item>onko</item>
+        <item>chirurgia</item>
+    </string-array>
+
+    <string-array name="bni_zion_arrays">
+        <item>ozenGaron</item>
+        <item>yoldot</item>
+        <item>nashim</item>
+    </string-array>
+
+
+</resources>

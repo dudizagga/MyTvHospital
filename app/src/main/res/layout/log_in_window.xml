@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="log in page"
+        style="@style/titles"
+        />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Input_id2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+        <EditText
+            android:id="@+id/id2"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="id"
+            android:inputType="number"
+            android:padding="10dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Input_passt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/Passt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+
+            />
+
+
+    </android.support.design.widget.TextInputLayout>
+    <Button
+       style="@style/btn_begin"
+        android:id="@+id/btn_log"
+        android:text="log in"
+
+        />
+
+</LinearLayout>
