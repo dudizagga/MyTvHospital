@@ -11,4 +11,5 @@ public class UserDtails {
     public String clazz;
     public String reason;
     public String ownerId;
+    public String id;
 }

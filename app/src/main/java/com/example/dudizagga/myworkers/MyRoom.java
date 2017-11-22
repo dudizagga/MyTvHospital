@@ -27,10 +27,8 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
 
     Hospital H = new Hospital();
     utlShared u;
-    String hospital, clazz, room, reason, name, phone, ownerId;
+    String hospital, clazz, room, reason, name, phone, ownerId,id;
     Context context;
-    ArrayList<String> ownerIdExist;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +36,6 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.activity_my_room);
         setPointer();
         getBack();
-
-
     }
 
     private void setPointer() {
@@ -59,7 +55,7 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
                 clazz = spinner2.getSelectedItem().toString();
                 room = spinner3.getSelectedItem().toString();
                 reason = spinner4.getSelectedItem().toString();
-                saveBack(hospital, name, clazz, room, phone, reason);
+                saveBack(hospital, name, clazz, room, phone, reason, id);
 
 
             }
@@ -83,7 +79,7 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
                 array(H.rambam, R.id.spinner2);
 
                 break;
-            case "Bne-zion":
+            case "Bnezion":
                 array(H.bnezion, R.id.spinner2);
 
                 break;
@@ -105,9 +101,10 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
 
     }
 
-    public void saveBack(final String table, String name, String clazz, String roomNumber, String phone, final String reason) {
+    public void saveBack(final String table, String name, String clazz, String roomNumber, String phone, String reason ,String id) {
         final UserDtails user = new UserDtails();
         user.user = name;
+        user.id = id;
         user.clazz = clazz;
         user.roomNumber = roomNumber;
         user.phoneNumber = phone;
@@ -116,25 +113,9 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
         Backendless.Persistence.of(UserDtails.class).save(user, new AsyncCallback<UserDtails>() {
             @Override
             public void handleResponse(UserDtails response) {
-                tre(table, UserDtails.class);
-                ownerIdExist = new ArrayList<>();
-                Log.e("shared", u.getId("own"));
-                Log.e("response", ownerId);
-                ownerIdExist.add(response.ownerId);
-                Log.e("ownerIdExist", String.valueOf(ownerIdExist));
-                    /*if (ownerIdExist.contains(ownerId)) {
-                        Backendless.Persistence.of(UserDtails.class).remove(user, new AsyncCallback<Long>() {
-                            @Override
-                            public void handleResponse(Long response) {
-                                Toast.makeText(MyRoom.this, "this user exist", Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-
-                            }
-                        });
-                    }*/
+                if (response.ownerId.equals(u.getId("own"))){
+                    Toast.makeText(MyRoom.this, "this user already exist!", Toast.LENGTH_SHORT).show();
+                }
                 }
             @Override
             public void handleFault(BackendlessFault fault) {
@@ -158,13 +139,12 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
             public void handleResponse(List<Users> response) {
                 for (int i = 0; i < response.size(); i++) {
 
-                    /*Log.e("shared",u.getId("own"));
-                    Log.e("response",response.get(i).objectId);*/
                     if (response.get(i).objectId.equals(u.getId("own"))) {
                         phone = response.get(i).phone;
                         name = response.get(i).name;
                         Log.e("n", name);
                         ownerId = response.get(i).ownerId;
+                        id = response.get(i).id;
                     }
                 }
             }

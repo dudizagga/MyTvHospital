@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 
 public class Hospital {
-    String[] hostpital = {"Carmel", "Rambam", "Bne-zion"};
+    String[] hostpital = {"Carmel", "Rambam", "Bnezion"};
     String[] carmel = {"dam", "kirurgia", "yoldot"};
     String[] rambam = {"dam", "lev", "yeladim"};
     String[] bnezion = {"dam", "nimratz", "miyun"};
