@@ -6,6 +6,7 @@ package com.example.dudizagga.myworkers.helpClassesAndTables;
 
 public class UserDtails {
     public String user;
+    public String lastName;
     public String roomNumber;
     public String phoneNumber;
     public String clazz;

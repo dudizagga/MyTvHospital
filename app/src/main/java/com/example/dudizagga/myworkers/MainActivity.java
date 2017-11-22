@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Backendless.initApp(this, "8722B260-2741-E229-FF80-B13B0CD73100", "79260CF7-C991-4449-FF75-D54D102D9100");
+        Backendless.initApp(this, "", "");
 
         setPointer();
 

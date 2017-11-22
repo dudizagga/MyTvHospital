@@ -27,7 +27,7 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
 
     Hospital H = new Hospital();
     utlShared u;
-    String hospital, clazz, room, reason, name, phone, ownerId,id;
+    String hospital, clazz, room, reason, name,lastname, phone, ownerId,id;
     Context context;
 
     @Override
@@ -55,7 +55,7 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
                 clazz = spinner2.getSelectedItem().toString();
                 room = spinner3.getSelectedItem().toString();
                 reason = spinner4.getSelectedItem().toString();
-                saveBack(hospital, name, clazz, room, phone, reason, id);
+                saveBack(hospital, name, lastname, clazz, room, phone, reason, id);
 
 
             }
@@ -101,9 +101,10 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
 
     }
 
-    public void saveBack(final String table, String name, String clazz, String roomNumber, String phone, String reason ,String id) {
+    public void saveBack(final String table, String name , String lastName, String clazz, String roomNumber, String phone, String reason ,String id) {
         final UserDtails user = new UserDtails();
         user.user = name;
+        user.lastName = lastName;
         user.id = id;
         user.clazz = clazz;
         user.roomNumber = roomNumber;
@@ -140,9 +141,9 @@ public class MyRoom extends AppCompatActivity implements AdapterView.OnItemSelec
                 for (int i = 0; i < response.size(); i++) {
 
                     if (response.get(i).objectId.equals(u.getId("own"))) {
-                        phone = response.get(i).phone;
                         name = response.get(i).name;
-                        Log.e("n", name);
+                        lastname = response.get(i).lastName;
+                        phone = response.get(i).phone;
                         ownerId = response.get(i).ownerId;
                         id = response.get(i).id;
                     }
